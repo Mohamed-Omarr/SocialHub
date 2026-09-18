@@ -1,0 +1,20 @@
+{
+  "name": "socialhub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "oxlint",
+    "*.{js,jsx,ts,tsx,json,css}": "oxfmt"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0"
+  }
+}
