@@ -1,0 +1,68 @@
+/* ==========================================
+   PRIVATE STYLES
+   For authenticated users (dashboard)
+   Root variables and foundation
+   ========================================== */
+
+@import url("../shared/variables.css");
+@import url("../shared/globals.css");
+@import url("../shared/utilities.css");
+@import url("../shared/theme-toggle.css");
+
+/* ==========================================
+   PRIVATE ROOT VARIABLES
+   Additional/override variables for authenticated users
+   ========================================== */
+
+:root {
+    /* Private/Dashboard color overrides (if needed) */
+
+    /* Sidebar/Navigation colors */
+    --color-sidebar-bg: #f6f3ff;
+    --color-sidebar-border: rgba(109, 77, 255, 0.12);
+    --color-sidebar-text: #645d7a;
+    --color-sidebar-text-active: #6d4dff;
+    --color-sidebar-hover: #faf8ff;
+
+    /* Dashboard specific spacing */
+    --dashboard-sidebar-width: 210px;
+    --dashboard-sidebar-width-expanded: 260px;
+
+    /* Dashboard specific shadows */
+    --shadow-card-hover: 0 12px 32px rgba(74, 42, 160, 0.16);
+}
+
+[data-theme="dark"] {
+    /* Dark mode dashboard variables */
+
+    /* Sidebar/Navigation colors */
+    --color-sidebar-bg: #2a2340;
+    --color-sidebar-border: rgba(139, 108, 255, 0.2);
+    --color-sidebar-text: #b3a8c7;
+    --color-sidebar-text-active: #8b6cff;
+    --color-sidebar-hover: #3a3250;
+}
+
+/* ==========================================
+   PLACEHOLDER FOR PRIVATE COMPONENTS
+   Add private/authenticated component styles below
+   ========================================== */
+
+/*
+  FUTURE PRIVATE COMPONENTS:
+
+  ✓ Dashboard Layout
+  ✓ Sidebar Navigation
+  ✓ Private Dashboard Preview
+  ✓ User Profile Card
+  ✓ Settings Panel
+  ✓ Notifications Panel
+  ✓ Private Messages
+  ✓ User Friends List
+  ✓ Private Calls Interface
+  ✓ Activity Feed (personal)
+  ✓ Dashboard Cards/Widgets
+  ✓ User Settings
+
+  Add component styles here as needed
+*/

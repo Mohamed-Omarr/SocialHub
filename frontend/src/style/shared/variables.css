@@ -1,0 +1,155 @@
+/* ==========================================
+   DESIGN TOKENS & CSS VARIABLES
+   Light Mode (Default)
+   ========================================== */
+
+:root {
+  /* Colors - Brand */
+  --color-primary: #6d4dff;
+  --color-primary-light: #8b6cff;
+  --color-secondary: #ff4f9a;
+  --color-tertiary: #22d3ee;
+  
+  /* Colors - Accent Palette */
+  --color-accent-green: #34d399;
+  --color-accent-amber: #fbbf24;
+  --color-accent-rose: #fb7185;
+  
+  /* Colors - Text */
+  --color-text-primary: #1a1433;
+  --color-text-secondary: #645d7a;
+  --color-text-muted: #645d7a;
+  --color-text-inverse: #ffffff;
+  
+  /* Colors - Background */
+  --color-bg-base: #f6f3ff;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-alt: #faf8ff;
+  --color-bg-surface-hover: #f3efff;
+  --color-bg-overlay: rgba(255, 255, 255, 0.72);
+  
+  /* Colors - Status */
+  --color-status-online: #22c55e;
+  --color-status-voice: #22d3ee;
+  --color-status-video: #ff4f9a;
+  --color-status-offline: #c4bfd4;
+  
+  /* Colors - UI Elements */
+  --color-border: rgba(109, 77, 255, 0.12);
+  --color-border-light: rgba(255, 255, 255, 0.8);
+  --color-border-dark: rgba(255, 255, 255, 0.72);
+  --color-error: #ef4444;
+  
+  /* Shadows */
+  --shadow-sm: 0 8px 20px rgba(74, 42, 160, 0.08);
+  --shadow-md: 0 10px 30px rgba(74, 42, 160, 0.08);
+  --shadow-lg: 0 16px 40px rgba(74, 42, 160, 0.14);
+  --shadow-xl: 0 18px 50px rgba(74, 42, 160, 0.12);
+  --shadow-inner: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.82rem;
+  --font-size-base: 0.95rem;
+  --font-size-lg: 1.05rem;
+  --font-size-xl: 1.12rem;
+  --font-size-2xl: clamp(2.6rem, 8vw, 5.1rem);
+  
+  --line-height-tight: 1.08;
+  --line-height-normal: 1.55;
+  
+  /* Spacing */
+  --space-2xs: 0.2rem;
+  --space-xs: 0.3rem;
+  --space-sm: 0.4rem;
+  --space-md: 0.5rem;
+  --space-lg: 0.7rem;
+  --space-xl: 0.8rem;
+  --space-2xl: 0.9rem;
+  --space-3xl: 1rem;
+  --space-4xl: 1.2rem;
+  --space-5xl: 1.4rem;
+  --space-6xl: 1.5rem;
+  --space-7xl: 1.6rem;
+  --space-8xl: 2rem;
+  --space-9xl: 2.4rem;
+  --space-10xl: 3.2rem;
+  --space-11xl: 4rem;
+  --space-12xl: 4.5rem;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 999px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Container */
+  --container-max-width: 1160px;
+  --container-padding: 2rem;
+}
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+
+[data-theme="dark"] {
+  /* Colors - Text */
+  --color-text-primary: #f0ecf8;
+  --color-text-secondary: #b3a8c7;
+  --color-text-muted: #8b7fa1;
+  --color-text-inverse: #1a1433;
+  
+  /* Colors - Background */
+  --color-bg-base: #0f0a1a;
+  --color-bg-surface: #1a1530;
+  --color-bg-surface-alt: #2a2340;
+  --color-bg-surface-hover: #3a3250;
+  --color-bg-overlay: rgba(26, 21, 48, 0.72);
+  
+  /* Colors - UI Elements */
+  --color-border: rgba(139, 108, 255, 0.2);
+  --color-border-light: rgba(139, 108, 255, 0.2);
+  --color-border-dark: rgba(139, 108, 255, 0.3);
+  
+  /* Shadows - Adjusted for dark mode */
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 18px 50px rgba(0, 0, 0, 0.4);
+  --shadow-inner: inset 0 0 0 1px rgba(139, 108, 255, 0.2);
+}
+
+/* ==========================================
+   DEPRECATED VARIABLES (for compatibility)
+   Map old names to new tokens
+   ========================================== */
+
+:root {
+  --violet: var(--color-primary);
+  --violet-2: var(--color-primary-light);
+  --pink: var(--color-secondary);
+  --cyan: var(--color-tertiary);
+  --green: var(--color-accent-green);
+  --amber: var(--color-accent-amber);
+  --rose: var(--color-accent-rose);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-muted);
+  --line: var(--color-border);
+  --bg: var(--color-bg-base);
+  --white: var(--color-bg-surface);
+  --shadow: var(--shadow-xl);
+  --radius: var(--radius-xl);
+  --font: var(--font-family);
+}
