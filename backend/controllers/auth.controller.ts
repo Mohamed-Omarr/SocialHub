@@ -14,7 +14,6 @@ export const signup = async (req: Request, res: Response) => {
   }
 
   return res.status(201).json({
-    user: data.user,
     session: data.session?.access_token,
   });
 };
@@ -31,7 +30,6 @@ export const signin = async (req: Request, res: Response) => {
   }
 
   return res.status(200).json({
-    user: data.user,
     session: data.session.access_token,
   });
 };
