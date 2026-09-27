@@ -1,13 +1,11 @@
-import { people, posts } from '../../../../data.ts';
-import type { Presence } from '../../../../data.ts';
-
+import { people, posts, type Presence } from "../../../../data";
 const navItems = [
-  { label: 'Home', active: true },
-  { label: 'Discover', active: false },
-  { label: 'Friends', active: false },
-  { label: 'Messages', active: false },
-  { label: 'Calls', active: false },
-  { label: 'Notifications', active: false },
+  { label: "Home", active: true },
+  { label: "Discover", active: false },
+  { label: "Friends", active: false },
+  { label: "Messages", active: false },
+  { label: "Calls", active: false },
+  { label: "Notifications", active: false },
 ] as const;
 
 export default function DashboardPreview() {
@@ -20,8 +18,8 @@ export default function DashboardPreview() {
           <p className="eyebrow">Product preview</p>
           <h2>Your world, in one colorful hub</h2>
           <p>
-            A feed that feels alive, friends who are actually there, and conversation that can jump
-            into voice or video in a tap.
+            A feed that feels alive, friends who are actually there, and
+            conversation that can jump into voice or video in a tap.
           </p>
         </div>
 
@@ -33,7 +31,7 @@ export default function DashboardPreview() {
             <p className="dash-brand">SocialHub</p>
             <ul>
               {navItems.map((item) => (
-                <li key={item.label} className={item.active ? 'is-active' : ''}>
+                <li key={item.label} className={item.active ? "is-active" : ""}>
                   <span className={`nav-ico ico-${item.label.toLowerCase()}`} />
                   {item.label}
                 </li>
@@ -62,7 +60,9 @@ export default function DashboardPreview() {
                 </div>
               </header>
               <p>{featured.text}</p>
-              {featured.image ? <img className="feed-photo" src={featured.image} alt="" /> : null}
+              {featured.image ? (
+                <img className="feed-photo" src={featured.image} alt="" />
+              ) : null}
               <div className="reactions">
                 <span>🔥 {featured.likes}</span>
                 <span>💬 {featured.comments} comments</span>
@@ -105,8 +105,8 @@ export default function DashboardPreview() {
 }
 
 function statusLabel(status: Presence) {
-  if (status === 'online') return 'Online';
-  if (status === 'voice') return 'In a voice call';
-  if (status === 'video') return 'In a video call';
-  return 'Away';
+  if (status === "online") return "Online";
+  if (status === "voice") return "In a voice call";
+  if (status === "video") return "In a video call";
+  return "Away";
 }

@@ -8,9 +8,6 @@ import SocialFeed from "./components/SocialFeed";
 export default function Index() {
   return (
     <>
-      <a className="skip-link" href="#main">
-        Skip to content
-      </a>
       <main id="main">
         <Hero />
         <DashboardPreview />
