@@ -1,13 +1,17 @@
 // communicate with database (supabase)
-import { supabase } from "../src/lib/supabase";
+import { supabase } from "@/lib/supabase.js";
 
-export const signup = async (email: string, password: string, name: string) => {
+export const signup = async (
+  email: string,
+  password: string,
+  username: string,
+) => {
   return await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
-        display_name: name,
+        display_name: username,
       },
     },
   });

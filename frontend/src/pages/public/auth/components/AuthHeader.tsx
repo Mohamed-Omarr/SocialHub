@@ -1,18 +1,18 @@
 import type { ReactNode } from "react";
 
-type AuthLayoutProps = {
+type AuthHeaderProps = {
   title: string;
   subtitle: string;
   children: ReactNode;
   footer: ReactNode;
 };
 
-export default function AuthLayout({
+export default function AuthHeader({
   title,
   subtitle,
   children,
   footer,
-}: AuthLayoutProps) {
+}: AuthHeaderProps) {
   return (
     <div className="auth-page">
       <div className="orb orb-a" aria-hidden="true" />

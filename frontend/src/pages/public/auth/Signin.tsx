@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
-import AuthLayout from "./components/AuthLayout";
+import AuthHeader from "./components/AuthHeader";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
@@ -21,14 +21,37 @@ export default function Login() {
       return;
     }
 
-    // Replace with real authentication call.
-    window.setTimeout(() => {
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message ?? "Invalid email or password.");
+        return;
+      }
+
+      // Sign in succeeded
+      // Store token / update auth state
+      // navigate("/home");
+    } catch {
+      setError("Unable to connect to the server. Please try again.");
+    } finally {
       setIsSubmitting(false);
-    }, 900);
+    }
   }
 
   return (
-    <AuthLayout
+    <AuthHeader
       title="Welcome back"
       subtitle="Sign in to catch up with your circle."
       footer={
@@ -103,6 +126,6 @@ export default function Login() {
           {isSubmitting ? "Signing in…" : "Sign in"}
         </button>
       </form>
-    </AuthLayout>
+    </AuthHeader>
   );
 }

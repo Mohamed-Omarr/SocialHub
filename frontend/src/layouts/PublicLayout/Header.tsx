@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import Logo from '../../pages/public/landing/components/Logo.tsx';
+import { useEffect, useState } from "react";
+import Logo from "../../pages/public/landing/components/Logo.tsx";
 
 const links = [
-  { href: '#home', label: 'Home' },
-  { href: '#features', label: 'Features' },
-  { href: '#community', label: 'Community' },
-  { href: '#about', label: 'About' },
+  { href: "#home", label: "Home" },
+  { href: "#features", label: "Features" },
+  { href: "#community", label: "Community" },
+  { href: "#about", label: "About" },
 ] as const;
 
 export default function Header() {
@@ -15,19 +15,19 @@ export default function Header() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [open]);
 
   return (
-    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="header-inner">
         <Logo />
         <nav className="nav-desktop" aria-label="Primary">
@@ -38,10 +38,10 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <a className="btn btn-ghost" href="#login">
+          <a className="btn btn-ghost" href="/auth/signin">
             Log In
           </a>
-          <a className="btn btn-primary" href="#get-started">
+          <a className="btn btn-primary" href="/auth/signup">
             Get Started
           </a>
           <button
@@ -51,22 +51,37 @@ export default function Header() {
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
           >
-            <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-            <span className={`burger ${open ? 'is-open' : ''}`} aria-hidden="true" />
+            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+            <span
+              className={`burger ${open ? "is-open" : ""}`}
+              aria-hidden="true"
+            />
           </button>
         </div>
       </div>
-      <div id="mobile-nav" className={`mobile-nav ${open ? 'is-open' : ''}`} hidden={!open}>
+      <div
+        id="mobile-nav"
+        className={`mobile-nav ${open ? "is-open" : ""}`}
+        hidden={!open}
+      >
         <nav aria-label="Mobile">
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
             </a>
           ))}
-          <a className="btn btn-ghost" href="#login" onClick={() => setOpen(false)}>
+          <a
+            className="btn btn-ghost"
+            href="#login"
+            onClick={() => setOpen(false)}
+          >
             Log In
           </a>
-          <a className="btn btn-primary" href="#get-started" onClick={() => setOpen(false)}>
+          <a
+            className="btn btn-primary"
+            href="#get-started"
+            onClick={() => setOpen(false)}
+          >
             Get Started
           </a>
         </nav>

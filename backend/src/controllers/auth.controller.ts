@@ -1,11 +1,11 @@
 //  define return value to the api response
 import type { Request, Response } from "express";
-import * as authService from "../services/auth.service";
+import * as authService from "@/services/auth.service.js";
 
 export const signup = async (req: Request, res: Response) => {
-  const { email, password, name } = req.body;
+  const { email, password, username } = req.body;
 
-  const { data, error } = await authService.signup(email, password, name);
+  const { data, error } = await authService.signup(email, password, username);
 
   if (error) {
     return res.status(error.status || 400).json({

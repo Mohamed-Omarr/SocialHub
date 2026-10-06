@@ -1,32 +1,31 @@
 import { useState, type FormEvent } from "react";
-import AuthLayout from "./components/AuthLayout";
+import AuthHeader from "./components/AuthHeader";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
 
     const form = new FormData(event.currentTarget);
-    const firstName = String(form.get("firstName") ?? "").trim();
-    const lastName = String(form.get("lastName") ?? "").trim();
+    const username = String(form.get("username") ?? "").trim();
     const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
     const confirmPassword = String(form.get("confirmPassword") ?? "");
     const agreed = form.get("terms") === "on";
 
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    if (!username || !email || !password || !confirmPassword) {
       setError("Fill in every field to create your account.");
       setIsSubmitting(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords don\u2019t match. Give them another look.");
+      setError("Passwords don’t match. Give them another look.");
       setIsSubmitting(false);
       return;
     }
@@ -43,14 +42,37 @@ export default function Register() {
       return;
     }
 
-    // Replace with real registration call.
-    window.setTimeout(() => {
+    try {
+      const response = await fetch(`/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      // Signup succeeded
+      // navigate("/home");
+    } catch {
+      setError("Unable to connect to the server. Please try again.");
+    } finally {
       setIsSubmitting(false);
-    }, 900);
+    }
   }
 
   return (
-    <AuthLayout
+    <AuthHeader
       title="Create your account"
       subtitle="Join SocialHub and start sharing your world."
       footer={
@@ -67,34 +89,17 @@ export default function Register() {
 
         <div className="form-row">
           <div className="form-group">
-            <label className="form-label" htmlFor="register-first-name">
-              First name
+            <label className="form-label" htmlFor="register-username">
+              username{" "}
             </label>
             <div className="form-field">
               <input
-                id="register-first-name"
-                name="firstName"
+                id="register-username"
+                name="username"
                 type="text"
                 className="form-input"
                 placeholder="Maya"
                 autoComplete="given-name"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label className="form-label" htmlFor="register-last-name">
-              Last name
-            </label>
-            <div className="form-field">
-              <input
-                id="register-last-name"
-                name="lastName"
-                type="text"
-                className="form-input"
-                placeholder="Chen"
-                autoComplete="family-name"
                 required
               />
             </div>
@@ -185,6 +190,6 @@ export default function Register() {
           {isSubmitting ? "Creating account…" : "Create account"}
         </button>
       </form>
-    </AuthLayout>
+    </AuthHeader>
   );
 }
